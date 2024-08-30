@@ -67,7 +67,25 @@ input[type=number] {
     width: 65%
 }
 
-/* Custom CSS in style/main.css or in a <style> tag */
+
+/*Output*/
+
+.outContainer {
+    display: none;
+
+}
+
+.table-striped tr:nth-of-type(odd) {
+    background-color: #f9f9f9; 
+}
+
+#outputTable tr td {
+    /* display: block; */
+    font-size: 1rem; /* Adjust font size if needed */
+    padding: 0.75rem; /* Padding for better spacing */
+}
+
+
 @media (max-width: 768px) {
     .matrix-container {
         display: flex;
@@ -77,20 +95,3 @@ input[type=number] {
 }
 
 
-
-
-/*Output*/
-
-.outContainer {
-    display: none;
-}
-
-.table-striped tr:nth-of-type(odd) {
-    background-color: #f9f9f9; 
-}
-
-.output-cell {
-    display: block;
-    font-size: 1rem; /* Adjust font size if needed */
-    padding: 0.75rem; /* Padding for better spacing */
-}
