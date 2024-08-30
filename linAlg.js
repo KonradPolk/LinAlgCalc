@@ -11,7 +11,6 @@ function matrixMultiplcation(table1,table2,tableOut) {
         for (var k = 0; k < m; k++) {
             // console.log(sumInTd + "+" (table1[i][k] * table2[k][v]))
             sumInTd += (table1[v][k] * table2[k][i]);
-            
         }
         $(this).html(sumInTd);
 
@@ -21,11 +20,10 @@ function matrixMultiplcation(table1,table2,tableOut) {
             v++;
         }
     });
-    
 }
 
 function matrixAddition(table1,table2,tableOut) {
-    // console.log("hellowrld3!!")
+
     i = 0;
     v = 0;
     $(tableOut + ' span').each(function() {
@@ -37,6 +35,39 @@ function matrixAddition(table1,table2,tableOut) {
         }
     });
 
+}
+
+function tableToArray(tableName, tableLength, tableWidth) {
+    var tempArray = [];
+
+    //Initialize the arrays before filling them.
+    for (var row = 0; row < tableLength; row++) {
+        tempArray[row] = []; 
+    }
+
+    var i = 0;
+    var j = 0;
+    $(tableName).each(function() {
+        
+        if ( isNaN(parseFloat($(this).val()))) {
+            if (selectedOperation == '+') {
+                tempArray[i][j] = 0;
+            } else {
+                tempArray[i][j] = 1;
+            }
+            
+        }
+        else {
+            tempArray[i][j] = parseFloat($(this).val());
+        }
+        j++;
+        if (j == tableWidth) {
+            j = 0;
+            i++;
+        }
+    });
+
+    return tempArray
 }
 
 $(function() {
@@ -72,8 +103,8 @@ $(function() {
         //Turn it into the biggest row/column combo to not lose any data.
 
         if (selectedOperation == '*') {
-            //If more columns in first than rows in second .... add rows in second
 
+            //If more columns in first than rows in second .... add rows in second
             while (firstTableWidth > secondTableLength) {
                 $("#secondTable").append("<tr></tr>")
                 var i = 0;
@@ -85,7 +116,6 @@ $(function() {
             }
 
             //If more rows in second than columns in first .. add columns to first
-
             while (secondTableLength >firstTableWidth) {
                 $("#firstTable tr").append(`<td><input type="number" class="form-control"></td>`)
                 firstTableWidth++
@@ -94,6 +124,7 @@ $(function() {
 
         if (selectedOperation == '+') {
             while (firstTableLength > secondTableLength) {
+
                 //make secondTableLenght equal by adding rows
                 $("#secondTable").append("<tr></tr>")
                 secondTableLength++
@@ -104,6 +135,7 @@ $(function() {
                 }
             }
             while (secondTableLength > firstTableLength) {
+
                 //Make firstTableLength equal by adding rows
                 $("#firstTable").append("<tr></tr>")
                 firstTableLength++
@@ -115,11 +147,13 @@ $(function() {
             }
 
             while (firstTableWidth > secondTableWidth) {
+
                 //Make secondTableWidth equal by adding columns
                 $("#secondTable tr").append(`<td><input type="number" class="form-control"></td>`)
                 secondTableWidth++
             }
             while (secondTableWidth > firstTableWidth) {
+
                 //Make firstTableWidth equal by adding columnss
                 $("#firstTable tr").append(`<td><input type="number" class="form-control"></td>`)
                 firstTableWidth++
@@ -128,8 +162,9 @@ $(function() {
     });
 
     $addColFirst.on('click', function() {
-        // console.log("hello")
+        
         if (firstTableWidth != 10) {
+            
             $("#firstTable tr").append(`<td><input type="number" class="form-control"></td>`)
             firstTableWidth++
 
@@ -305,69 +340,8 @@ $(function() {
             outputLength++
         }
 
-        var firstArray = [];
-        var secondArray = [];
-
-        //Initialize the arrays before filling them.
-        for (var row = 0; row < firstTableLength; row++) {
-            firstArray[row] = []; 
-        }
-
-        for (var row = 0; row < secondTableLength; row++) {
-            secondArray[row] = []; 
-        }
-
-
-
-        var i = 0;
-        var j = 0;
-        $('#firstTable input').each(function() {
-            // firstArray[i][j] =
-            // console.log((i+1) + " row, " + (j+1) + " column")
-            if ( isNaN(parseFloat($(this).val()))) {
-                if (selectedOperation == '+') {
-                    firstArray[i][j] = 0;
-                } else {
-                    firstArray[i][j] = 1;
-                }
-                
-            }
-            else {
-                firstArray[i][j] = parseFloat($(this).val());
-            }
-            j++;
-            if (j == firstTableWidth) {
-                j = 0;
-                i++;
-            }
-            // var value = parseFloat($(this).val()) || 0; // Convert to number, default to 0
-        });
-
-        // console.log(firstArray);
-
-
-        var i = 0;
-        var j = 0;
-        $('#secondTable input').each(function() {
-            if ( isNaN(parseFloat($(this).val()))) {    
-                if (selectedOperation == '+') {
-                    secondArray[i][j] = 0;
-                } else {
-                    secondArray[i][j] = 1;
-                }
-            }
-            else {
-                secondArray[i][j] = parseFloat($(this).val());
-            }
-            j++;
-            if (j == secondTableWidth) {
-                j = 0;
-                i++;
-            }
-            // var value = parseFloat($(this).val()) || 0; // Convert to number, default to 0
-        });
-
-        // console.log(secondArray);
+        var firstArray = tableToArray('#firstTable input', firstTableLength, firstTableWidth);
+        var secondArray = tableToArray('#secondTable input', secondTableLength, secondTableWidth)
 
         if (selectedOperation == '+') {
             matrixAddition(firstArray,secondArray,"#outputTable");
