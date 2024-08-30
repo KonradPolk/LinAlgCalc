@@ -1,11 +1,42 @@
 //TODO: OPTIMIZE CODE TO ADHERE TO DRY!
 
 function matrixMultiplcation(table1,table2,tableOut) {
-    console.log("hello wrld")
+    var i = 0;
+    var v = 0;
+    var m = table1[0].length;
+    
+    $(tableOut + ' span').each(function() {
+        sumInTd = 0;
+        // $(this).html(table1[v][i] + table2[v][i]);
+        for (var k = 0; k < m; k++) {
+            // console.log(sumInTd + "+" (table1[i][k] * table2[k][v]))
+            sumInTd += (table1[v][k] * table2[k][i]);
+            
+        }
+        $(this).html(sumInTd);
+
+        i++;
+        if (i == table2[0].length) {
+            i = 0;
+            v++;
+        }
+    });
+    
 }
 
-function matrixMultiplcation(table1,table2,tableOut) {
-    console.log("hellowrld3!!")
+function matrixAddition(table1,table2,tableOut) {
+    // console.log("hellowrld3!!")
+    i = 0;
+    v = 0;
+    $(tableOut + ' span').each(function() {
+        $(this).html(table1[v][i] + table2[v][i]);
+        i++;
+        if (i == table1[0].length) {
+            i = 0;
+            v++;
+        }
+    });
+
 }
 
 $(function() {
@@ -272,6 +303,77 @@ $(function() {
                 i++
             }
             outputLength++
+        }
+
+        var firstArray = [];
+        var secondArray = [];
+
+        //Initialize the arrays before filling them.
+        for (var row = 0; row < firstTableLength; row++) {
+            firstArray[row] = []; 
+        }
+
+        for (var row = 0; row < secondTableLength; row++) {
+            secondArray[row] = []; 
+        }
+
+
+
+        var i = 0;
+        var j = 0;
+        $('#firstTable input').each(function() {
+            // firstArray[i][j] =
+            // console.log((i+1) + " row, " + (j+1) + " column")
+            if ( isNaN(parseFloat($(this).val()))) {
+                if (selectedOperation == '+') {
+                    firstArray[i][j] = 0;
+                } else {
+                    firstArray[i][j] = 1;
+                }
+                
+            }
+            else {
+                firstArray[i][j] = parseFloat($(this).val());
+            }
+            j++;
+            if (j == firstTableWidth) {
+                j = 0;
+                i++;
+            }
+            // var value = parseFloat($(this).val()) || 0; // Convert to number, default to 0
+        });
+
+        // console.log(firstArray);
+
+
+        var i = 0;
+        var j = 0;
+        $('#secondTable input').each(function() {
+            if ( isNaN(parseFloat($(this).val()))) {    
+                if (selectedOperation == '+') {
+                    secondArray[i][j] = 0;
+                } else {
+                    secondArray[i][j] = 1;
+                }
+            }
+            else {
+                secondArray[i][j] = parseFloat($(this).val());
+            }
+            j++;
+            if (j == secondTableWidth) {
+                j = 0;
+                i++;
+            }
+            // var value = parseFloat($(this).val()) || 0; // Convert to number, default to 0
+        });
+
+        // console.log(secondArray);
+
+        if (selectedOperation == '+') {
+            matrixAddition(firstArray,secondArray,"#outputTable");
+        }
+        else if (selectedOperation == '*') {
+            matrixMultiplcation(firstArray,secondArray,"#outputTable");
         }
 
         $('.outContainer').css("display", "block");

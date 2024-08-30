@@ -7,9 +7,20 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/main.css">
+    <!-- <link rel="icon" href="icon.png" type="image/x-icon"> -->
+    <!-- //style="background-image: url('background.png'); background-repeat: repeat; height: 500px; width: 100%;" -->
 </head>
 
 <body>
+
+    <div class="container my-5" >
+        <div class="text-center">
+            <h1 class="display-4">Hello Welcome to my Linear Algebra Calculator!</h1>
+            <p class="lead">In this Linear Algebra Calculator you can do the operations of Matrix Addition and Matrix Multiplacition. You can add or remove rows/columns by clicking those respective buttons. The program will not allow you to create an invalid matrix combination and will always compensate by trying to make the other matrix scale with what you just changed. Leaving a input blank will result in the identity element for the corresponding calculation (0 for addition and 1 for multiplication). Anyways have fun and good luck studying Linear Algebra! </p>
+        </div>
+    </div>
+
+
     <div class="matrix-container">
         <!-- First Matrix -->
         <div class="container">
@@ -82,7 +93,7 @@
         <button class="btn btn-primary" id="calcOut">Calculate</button>
     </div>
 
-    <div class="container my-4 outContainer">
+    <div class="container my-4 outContainer" >
         <h3 class="text-center mb-4">Calculation Result</h3>
         <table class="table table-bordered table-striped text-center" id="outputTable">
                 <!-- <tr>
