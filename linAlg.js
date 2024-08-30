@@ -37,7 +37,7 @@ function matrixAddition(table1,table2,tableOut) {
 
 }
 
-function tableToArray(tableName, tableLength, tableWidth) {
+function tableToArray(tableName, tableLength, tableWidth, selectedOperation) {
     var tempArray = [];
 
     //Initialize the arrays before filling them.
@@ -164,7 +164,7 @@ $(function() {
     $addColFirst.on('click', function() {
         
         if (firstTableWidth != 10) {
-            
+
             $("#firstTable tr").append(`<td><input type="number" class="form-control"></td>`)
             firstTableWidth++
 
@@ -340,8 +340,8 @@ $(function() {
             outputLength++
         }
 
-        var firstArray = tableToArray('#firstTable input', firstTableLength, firstTableWidth);
-        var secondArray = tableToArray('#secondTable input', secondTableLength, secondTableWidth)
+        var firstArray = tableToArray('#firstTable input', firstTableLength, firstTableWidth, selectedOperation);
+        var secondArray = tableToArray('#secondTable input', secondTableLength, secondTableWidth, selectedOperation)
 
         if (selectedOperation == '+') {
             matrixAddition(firstArray,secondArray,"#outputTable");
