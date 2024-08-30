@@ -4,49 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linear Algebra Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/main.css">
 </head>
 
 <body>
     <div class="matrix-container">
         <!-- First Matrix -->
-        <table>
-            <tr>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-            </tr>
-            <tr>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-            </tr>
-            <tr>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-            </tr>
-        </table>
+        <div class="container">
+            <div class="mb-3 matrixMul">
+                <button type="button" class="btn btn-primary" id="addRowFirst">Add Row</button>
+                <button type="button" class="btn btn-danger" id="remRowFirst">Remove Row</button>
+                <button type="button" class="btn btn-primary" id="addColFirst">Add Column</button>
+                <button type="button" class="btn btn-danger" id="remColFirst">Remove Column</button>
+                <button type="button" class="btn btn-primary" id="remMatFirst">Clear Matrix</button>
+            </div>
+        
+            <table class="table table-bordered" id="firstTable">
+                <tr>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="text-center mb-3">
+            <label for="operationDropdown" class="mr-2">Select Operation:</label>
+            <select id="operationDropdown" class="form-control d-inline-block" style="width: auto;">
+                <option value="+">+</option>
+                <option value="*">×</option>
+            </select>
+        </div>
 
         <!-- Second Matrix -->
-        <table class="matrix-container-2">
-            <tr>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-            </tr>
-            <tr>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-            </tr>
-            <tr>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-                <td><input type="number"></td>
-            </tr>
+        <div class="container">
+            <div class="mb-3 matrixMul">
+                <button type="button" class="btn btn-primary" id="addRowSecond">Add Row</button>
+                <button type="button" class="btn btn-danger" id="remRowSecond">Remove Row</button>
+                <button type="button" class="btn btn-primary" id="addColSecond">Add Column</button>
+                <button type="button" class="btn btn-danger" id="remColSecond">Remove Column</button>
+                <button type="button" class="btn btn-primary" id="remMatSecond">Clear Matrix</button>
+            </div>
+        
+            <table class="table table-bordered" id="secondTable">
+                <tr>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                    <td><input type="number" class="form-control"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="enterBtn">
+        <button class="btn btn-primary" id="calcOut">Calculate</button>
+    </div>
+
+    <div class="container my-4 outContainer">
+        <h3 class="text-center mb-4">Calculation Result</h3>
+        <table class="table table-bordered table-striped text-center" id="outputTable">
+                <!-- <tr>
+                    <td><span class="output-cell">0</span></td>
+                    <td><span class="output-cell">0</span></td>
+                    <td><span class="output-cell">0</span></td>
+                </tr>
+                <tr>
+                    <td><span class="output-cell">0</span></td>
+                    <td><span class="output-cell">0</span></td>
+                    <td><span class="output-cell">0</span></td>
+                </tr>
+                <tr>
+                    <td><span class="output-cell">0</span></td>
+                    <td><span class="output-cell">0</span></td>
+                    <td><span class="output-cell">0</span></td>
+                </tr> -->
         </table>
     </div>
+
+    <script src="linAlg.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
