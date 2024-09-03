@@ -44,7 +44,7 @@ input[type=number] {
 #firstTable input.form-control, #secondTable input.form-control {
     width: 100%;
     height: 100%;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's width and height */
+    box-sizing: border-box; 
 }
 
 .matrixMul {
@@ -59,8 +59,8 @@ input[type=number] {
 }
 
 .enterBtn {
-    margin: 3vh 0 3vh auto; /* Center the div horizontally */
-    text-align: center; /* Center the button inside the div */
+    margin: 3vh 0 3vh auto;
+    text-align: center;
 }
 
 .enterBtn .btn {
@@ -81,8 +81,8 @@ input[type=number] {
 
 #outputTable tr td {
     /* display: block; */
-    font-size: 1rem; /* Adjust font size if needed */
-    padding: 0.75rem; /* Padding for better spacing */
+    font-size: 1rem;
+    padding: 0.75rem; 
 }
 
 

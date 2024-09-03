@@ -70,6 +70,10 @@ function tableToArray(tableName, tableLength, tableWidth, selectedOperation) {
     return tempArray
 }
 
+function clearTable(tableName) {
+    $(tableName).find('input').val('');
+}
+
 $(function() {
     var $addColFirst = $('#addColFirst')
     var $remColFirst = $("#remColFirst")
@@ -92,6 +96,9 @@ $(function() {
     var secondTableLength = 3
 
     var selectedOperation = $('#operationDropdown').val()
+
+    clearTable('#firstTable');
+    clearTable('#secondTable');
 
     // console.log("currently selected is " + selectedOperation)
 
@@ -316,11 +323,11 @@ $(function() {
     });
 
     $remMatFirst.on('click', function() {
-        $('#firstTable').find('input').val('');
+        clearTable('#firstTable');
     });
 
     $remMatSecond.on('click', function() {
-        $('#secondTable').find('input').val('');
+        clearTable('#secondTable');
     });
 
     $('#calcOut').on('click', function() { 
